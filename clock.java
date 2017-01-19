@@ -1,5 +1,6 @@
 Clock
 /**
+*Ex1
 *Created by Tomy on 1/12/17
 */
 public class Clock 
@@ -13,7 +14,7 @@ public class Clock
 		//Constructor is used to initialize objects
 		
 		//Behaviors: Constructs a clock with the specified hours,
-		//
+		//min and seconds
 		//
 		public Clock(int myhours, int myminutes, int myseconds)
 		{
