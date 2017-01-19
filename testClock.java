@@ -23,6 +23,7 @@ public class testClock
     
     //test constructor
     Clock time= new Clock(hours, minutes, seconds);
+    System.out.println("\n Time using first constructor: " + time);
   }
 
 }
