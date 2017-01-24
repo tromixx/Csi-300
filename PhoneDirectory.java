@@ -14,8 +14,10 @@ public class PhoneDirectory
                       "f - Find a phone number\n" +
                       "q - Quit\n");
     
-    
-    
+    //scan 1 is used for reading command
+    Scanner scan1 = new Scanner(System.in);
+    //scan2 is used to get other info from users
+    Scanner scan1 = new Scanner(System.in);
     
     
     
