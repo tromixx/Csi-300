@@ -33,6 +33,18 @@ public class testClock
     System.out.println("clock before advance" + time2);
     time2.advance();
     System.out.println("clock after advance" + time2);
+    
+    //test advance method foc case 2 3 and 4 LAB!!!!!!!!!!!
+    
+    //test setters
+    Clock time3= newClock(myhours: 10, myminutes: 24, myseconds: 45);
+    System.out.printl("clock before setting hours" + time3);
+    time3.setHours(14);
+    System.out.printl("clock after setting hours" + time3);
+    
+    //test other setters    LAB!!!!!!!!!!
+    //test all getters      LAB!!!!!!!!!
+    
   }
 
 }
