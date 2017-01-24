@@ -57,6 +57,24 @@ public class Clock
 				return "0" + n;
 			
 		}
+	
+		//Advance the clock by one second. The minutes and hours are
+		//adjusted if neccessary
+		//10:23:24 to 10:23:25
+		//10:23:59 to 10:24:00
+		//10:59:59 to 11:00:00
+		//23:59:59 to 00:00:00
+		public void advance()
+		{
+			if(++seconds > 59)
+			{
+				seconds= 0;
+				if(++minutes > 59)
+				{
+					minutes= 0;
+				}
+			}
+		}
 		
 		
 }
