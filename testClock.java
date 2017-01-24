@@ -26,6 +26,13 @@ public class testClock
     System.out.println("\n Time using first constructor: " + time);
     System.out.println("Time using the second constructor: " + new Clock(hours, minutes));
     System.out.println("Time using the no-arg constructor: " + new Clock());
+    
+    
+    //Test advance method
+    Clock time2 = new Clock(myhours:10, myminutes 23, myseconds: 25);
+    System.out.println("clock before advance" + time2);
+    time2.advance();
+    System.out.println("clock after advance" + time2);
   }
 
 }
