@@ -24,6 +24,9 @@ public class testClock
     //test constructor
     Clock time= new Clock(hours, minutes, seconds);
     System.out.println("\n Time using first constructor: " + time);
+    System.out.println("Time using the second constructor: " + new Clock(hours, minutes));
+    System.out.println("Time using the no-arg constructor: " + new Clock());
   }
 
 }
+// 232 613 131       3776
