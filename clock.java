@@ -74,6 +74,32 @@ public class Clock
 					minutes= 0;
 				}
 			}
+			
+			
+			
+		//test advance method 1 2 3, 4.
+		//Name: getHours
+		//Returns the hours stored in this object
+		public int getHours()
+		{
+			return hours;
+		}
+		//Name: getMinutes
+		
+		//Name: getSeconds
+			
+		//setHours
+	
+		//Change the hours stored in this subject
+	
+		public void set Hours(int myhours)
+		{
+			hours= myhours;
+		}
+		//Name: SetMinutes
+		//Name: SetSeconds
+				
+			
 		}
 		
 		
