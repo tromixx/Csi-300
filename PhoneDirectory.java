@@ -51,6 +51,22 @@ public class PhoneDirectory
         
         
         
+      } else if(command.equalsIgnoreCase( anotherString: "f"))
+      {
+        //prompt user for search key
+        //Search the database for records whose name begin with the search key
+        System.out.println("Enter name to look up: ");
+        // String a = scan2.nextLine();
+        // String b = b.trim();
+        //String key = b.toLowerCase()
+        //chaining call of instance method
+        String key = scan2.nextLine().trim().toLowerCase(); //all of this method return a condition
+        
+        
+        
+        
+        
+        
       }
       
       
