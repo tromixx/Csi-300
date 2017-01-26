@@ -1,1 +1,29 @@
-encontrar la primera palabra de 6 letras y mostrarla en consola
+import java.text.DecimalFormat
+import java.io.*;
+import java.util.Scanner;
+
+public class findSixLetterWord 
+{
+
+  public static void main(String args[]) 
+  {
+     Scanner sc = new Scanner(system.in);
+     String = text;
+     
+     do
+     {
+     System.out.println("introduce text");
+     String text = sc.nextInt();
+     }
+     If (text.length() = 6)
+     {
+     System.out.println(text);
+     
+     }
+      also
+      {
+      System.out.println("null")
+      }
+    } 
+}
+//encontrar la primera palabra de 6 letras y mostrarla en consola
