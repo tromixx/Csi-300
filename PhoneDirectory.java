@@ -63,11 +63,33 @@ public class PhoneDirectory
         String key = scan2.nextLine().trim().toLowerCase(); //all of this method return a condition
         
         
+        for(int i = 0; i < numRecords; i++)
+        {
+         String name= records[i].getName().toLowerCase();
+          if(name.startsWith(key))
+          {
+            System.out.println(records[i].getName() +" "+
+                               (records[i].getNumber());
+            
+          }
+          
+          
+        }
         
         
         
-        
-      }
+      } else if (command.equalsIgnoreCase( anotherString: "q"))
+            { 
+             //command is q. terminate program
+              //get out of infinite loop. Return means you want to terminate a program
+              return;
+            }else 
+                //Command is illegal; display error
+                               
+                {
+                 System.out.println("Command was not recognized: "+
+                                    "plis enter a, f or q");
+                }
       
       
       
