@@ -31,6 +31,20 @@ public class SavingsAccount extends Account
      {
          interestRate = rate;
      }
+     public void printStatment()
+     {
+     //print regular statment from your super class
+     //the compiler will assume that printStatment call itself, not the version that was inherited
+     
+     //printStatment();
+     //When a methid is called using super, Java looks first in the direct upperclass
+     super.printStatment();
+     
+     
+     
+     //then print interest rate
+     System.out.println(interestRate);
+     }
     
    
    
