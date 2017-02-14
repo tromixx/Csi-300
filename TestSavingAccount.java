@@ -11,6 +11,13 @@ public class TestSavingAccount
     savingAcct.setInterestRate(0.5);
    
     savingAcct.deposit(amount: 500.0);
+   
+   savingAcct.withdraw(amount:50.0);
+   
+   System.out.println("Balance: " + savingAcct.getBalance());
+   
+   savingAcct.close();
+   
   }
     
     
