@@ -12,9 +12,21 @@ public class CSI200NombreYApellido
       String fName, lName, initials;
       Scanner scan = new Scanner(System.in);
       
-      System.out.print("Please enter your name:  ");
+      System.out.print("Please enter your first name:  ");
 
+      fName = scan.nextLine();
+         
+      System.out.print("Please enter your last name:  ");
+   
+      Scanner scan2 = new Scanner(System.in);
+  
+      lName= scan2.nextLine();
       
+      initials= fName.charAt(0)+ "."+ lName.charAt(0)+ ".";
+      initials= initials.toUpperCase();
+      
+      
+         
       System.out.println("Your initials are:  " + initials);  
    }
 }
