@@ -1,4 +1,4 @@
-public class x_and_y
+public class XYPoint
 {
   //instance variables (attributes)
   private double x;
