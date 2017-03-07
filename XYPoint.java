@@ -14,4 +14,23 @@ public class XYPoint
     
   }
   
+  //other method
+  public void setX(double newX)
+  {
+  
+  }
+  public void setXY(double newX, double newY))
+  {
+    x= newX;
+    y= newY;
+  }
+  
+  //toString
+  public String toString()
+  {
+    String result = "("+ x + ", " + y + ")";
+    return result;
+    
+  }
+  
 }
