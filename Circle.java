@@ -11,15 +11,21 @@ public class Circle
     }
     public Circle(double r)
     {
+     radius = r;
     }
     public Circle (double r, String c)
     {
+     radius= r;
+      color= c;
     }
     
+ 
+ 
+ 
     //Method
     public double getRadius()
     {
-     return 0.0;
+     return radius;
      
     }
     public double
