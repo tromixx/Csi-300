@@ -1,3 +1,6 @@
+
+public Positivenumberwhile
+{
 public static void main(String[] args)
 { 
    Scanner scan = new Scanner(System.in);
@@ -15,4 +18,5 @@ public static void main(String[] args)
       System.out.print("The positive number is: "+ response);
 
 
+}
 }
