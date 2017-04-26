@@ -386,4 +386,73 @@ public class PracticeExercises
          return false;
    }
 }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   //Cat Worker Class Solution by N. Tobias
+public class Cat
+{
+   //instance data
+   private double weight;
+   private String mood;
+   
+   //Constructors
+   public Cat()
+   {
+      weight = 0.0;
+      mood = "QUIET";
+   }
+   public Cat(double w, String m)
+   {
+      weight = w;
+      mood = m;
+   }
+   
+   //methods
+   public void eat()
+   {
+      weight++;
+   }
+   public void poop()
+   {
+      weight--;
+   }
+   public void kick()
+   {
+      mood = "MEOW!";
+   }
+   public void pet()
+   {
+      mood = "PURRR";
+   }
+   public double getWeight()
+   {
+      return weight;
+   }
+   public String getMood()
+   {
+      return mood;
+   }
+   public void setWeight(double newWeight)
+   {
+      weight = newWeight;
+   }
+   public void setMood(String newMood)
+   {
+      mood = newMood;
+   }
+   public String toString()
+   {
+      String result = "The cat is currently in a " + mood 
+                        + " mood and weighs " + weight + " lbs.";
+      return result;
+   }
+}
 
