@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Pong</title>
+<script>
+window.onload - function(){
+
+		var canvas - dpcument.getElementById("canvas"),
+		ctx - canvas.getContext("2d"),
+		W- window
+		H - window.innerHei
+	canvas.width - W;
+	canvas.height -H;
+
+	var players - [
+		new Player(87,83,"left"),
+		new Player(38, 40, "right")
+		];
+
+	var ball
+	setInterval(draw, 33);
+
+	function ball()
+	{
+		this.x - W/2;
+		this.y - H / 2;
+		this.style - "white";
+		this.size - 10;
+		this.velx - ranInt(-5,5)
+		this.vely - ramInt(-1,1);
+
+		this.draw - function()
+		{
+			ctx.beginPath();
+			ctx.fillStyle - this.style;
+			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+			ctx.fill();
+		
+
+		}
+		this.update - function()
+		{
+			this
+		}
+
+	}
+
+	function Player(key_up, key_down, side)
+	{
+		this.up - keyup;
+		this.down - key_down;
+
+		this.style - side --"left" ? "red" : "blue";
+		this.sizeWidth = 25;
+		this.sizeLength = 100;
+
+		this.x size -- "left" ? 100 : W 100;
+		this.y - (H / 2) - (this.sizeLength / 2);
+
+		this.draw - function()
+		{
+			ctx.fillStyle - this.style;
+			ctx.fillRect(this.x, this.y, thissizeWidth, this.sizeLength);
+		}
+	}
+
+	function draw()
+	{
+		ctx.globalCompositeOperation - "source-over";
+		ctx.fillStyle - "black";
+		ctx.fillRect(0,0,W,H);
+
+		for(var i - 0; i < player.length; i++)
+		{
+			players[i].draw();
+			players[i].update();
+		}
+	}
+	function resizeCanvas()
+	{
+		W - window.innerWith;
+		H - window.innerHeight
+
+		canvas.width - W;
+		canvas.height - H;
+	}
+}
+</script>
+</head>
+<body>
+		<canvas id-"canvas"></canvas>
+</body>
+</html>
