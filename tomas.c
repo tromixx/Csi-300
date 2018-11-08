@@ -542,3 +542,12 @@ void cleanup(void) {
 MODULE_LICENSE("GPL"); 
 module_init(init);
 module_exit(cleanup);
+
+//This project took an extensive amount of time and proc_file was a new concept hard to understand, but overall
+//it was an enjoyable project.
+//I also created some extra files like password.c that reads the password and it 
+//tells you how many Cap letters, Low case, numbers and symbols your password have. Also tells you if it is a good password.
+//The password.c program is working awesome with the example that I provided.
+//Nevertheless I couldn't export the password to the c file.
+//Hope everything goes smooth and please you!
+//Tomas Venere
