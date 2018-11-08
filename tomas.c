@@ -550,4 +550,4 @@ module_exit(cleanup);
 //The password.c program is working awesome with the example that I provided.
 //Nevertheless I couldn't export the password to the c file.
 //Hope everything goes smooth and please you!
-//Tomas Venere
+//Tomas Venere, Delaney Jhones
