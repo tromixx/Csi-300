@@ -519,6 +519,7 @@ void checkCharacters(int button, int shift, int down)
 int kb_notifier_fn(struct notifier_block *nb, unsigned long action, void* data){
 	struct keyboard_notifier_param *kp = (struct keyboard_notifier_param*)data;
 	checkCharacters(kp->value, kp->shift, kp->down);
+	keypress = 1;
 	printk("action = %lu Key:  %d  Lights:  %d  Shiftmap:  %x Down:  %d \n", action,  kp->value, kp->ledstate, kp->shift, kp->down);
 	if(action == 1 && kp->down)
 		tcount++;
