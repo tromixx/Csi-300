@@ -137,8 +137,8 @@ void checkCharacters(int button, int shift, int down)
 	found = false;
 	if (down == 1 && shift == 0)
 	{	
-		input[15] = 10;
-		strncpy(passwrite[passcount2],input,16);
+		//input[15] = 10;
+		strcpy(passwrite[passcount2],input);
 		//curVal++;
 		switch (button)
 		{
