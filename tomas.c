@@ -22,18 +22,6 @@ unsigned long int lasttime;
 struct notifier_block nb;
 
 
-/*
-ssize_t read_proc(struct file* filp, char *buf, size_t count, loff_t *offp){
-	char message[128];
-	unsigned long int newtime = jiffies;
-	int calls_per_second = (HZ * tcount) / (newtime - lasttime);
-	tcount = 0;
-	lasttime = newtime;
-	sprintf(message, "Calls Per Second: %d\n", calls_per_second);
-	strcpy(buf, message);
-	return strlen(message);
-}
-*/
 //check the function at the begn of the loop and make a continuous function
 ssize_t read_proc(struct file* filp, char *buf, size_t count, loff_t *offp)
 {
